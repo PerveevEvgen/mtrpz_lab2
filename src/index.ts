@@ -27,18 +27,20 @@ list.add(10);
 console.log(list.findFirst(10)); //7
 console.log(list.findLast(10)); //8
 
-list.extend([11, 11]);
-console.log(list.toArray()); // [1488,15,16,16,6,6,6]
+const secondList = new LinkedList<number>();
+secondList.add(1);
+list.extend(secondList);
+console.log(list.toArray()); // [3,4,5,6,7,8,9,10,10,1]
 
 console.log(list.get(1)); //4
 
-console.log(list.length()); //11
+console.log(list.length()); //10
 
 list.reverse();
-console.log(list.toArray()); //[11,11,10,10,9,8,7,6,5,4,3]
+console.log(list.toArray()); //[1,10,10,9,8,7,6,5,4,3]
 
 const clonedList = list.clone();
-console.log(clonedList); //[11,11,10,10,9,8,7,6,5,4,3]
+console.log(clonedList); //[1,10,10,9,8,7,6,5,4,3]
 
 list.clear();
 console.log(list.toArray()); // []
