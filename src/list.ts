@@ -1,78 +1,138 @@
+export class ListNode<T> {
+  data: T;
+  next: ListNode<T> | null;
+
+  constructor(data: T) {
+    this.data = data;
+    this.next = null;
+  }
+}
 export class LinkedList<T> {
-  private list: T[];
+  head: ListNode<T> | null;
+  size: number;
 
   constructor() {
-    this.list = [];
+    this.head = null;
+    this.size = 0;
+  }
+
+  add(data: T): void {
+    const newNode = new ListNode(data);
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while (current.next !== this.head) {
+        current = current.next as ListNode<T>;
+      }
+      current.next = newNode;
+    }
+    newNode.next = this.head;
+    this.size++;
+  }
+
+  display(): void {
+    if (!this.head) {
+      console.log("Список пуст");
+      return;
+    }
+    console.log("Зв'язний список:");
+    let current = this.head;
+    do {
+      console.log(`${current.data}->${current.next?.data}`);
+      current = current.next as ListNode<T>;
+    } while (current !== this.head);
   }
 
   toArray(): T[] {
-    return this.list.slice();
+    const result: T[] = [];
+    if (!this.head) {
+      return result;
+    }
+    let current = this.head;
+    do {
+      result.push(current.data);
+      current = current.next as ListNode<T>;
+    } while (current !== this.head);
+    return result;
   }
 
   length(): number {
-    return this.list.length;
-  }
-  add(data: T): void {
-    this.list.push(data);
-  }
-
-  insert(element: T, index: number): void {
-    if (index < 0 || index > this.list.length) {
-      throw new Error("Incorect index");
+    let count = 0;
+    if (!this.head) {
+      return count;
     }
-    this.list.splice(index, 0, element);
-  }
-
-  delete(index: number): void {
-    if (index < 0 || index > this.list.length) {
-      throw new Error("Incorect index");
-    }
-    this.list.splice(index, 1);
-  }
-
-  deleteAll(data: T): void {
-    const filtered = this.list.filter((x) => {
-      return x != data;
-    });
-    this.list = filtered;
-  }
-
-  get(index: number): T {
-    if (index < 0 || index > this.list.length) {
-      throw new Error("Incorect index");
-    }
-    return this.list[index];
-  }
-
-  clone(): T[] {
-    const clonedList = [...this.list];
-    return clonedList;
+    let current = this.head;
+    do {
+      count++;
+      current = current.next as ListNode<T>;
+    } while (current !== this.head);
+    return count;
   }
 
   reverse(): void {
-    this.list = this.list.reverse();
+    if (!this.head || this.size === 1) {
+      return;
+    }
+    let prev: ListNode<T> | null = null;
+    let current = this.head;
+    let next = this.head.next as ListNode<T>;
+    do {
+      current.next = prev;
+      prev = current;
+      current = next;
+      next = current.next as ListNode<T>;
+    } while (current !== this.head);
+    current.next = prev;
+    this.head = prev;
+  }
+
+  clear(): void {
+    this.head = null;
+    this.size = 0;
+  }
+
+  get(index: number): T {
+    if (index < 0 || index >= this.size) {
+      throw new Error("Некоректне значення позиції");
+    }
+    let current = this.head;
+    for (let i = 0; i < index; i++) {
+      current = current!.next;
+    }
+    return current!.data;
   }
 
   findFirst(element: T): number {
-    const index = this.list.indexOf(element);
-    if (index != null) return index;
+    let current = this.head;
+    let index = 0;
+    while (current) {
+      if (current.data === element) {
+        return index;
+      }
+      current = current.next;
+      index++;
+    }
     return -1;
   }
 
   findLast(element: T): number {
-    const arr = [...this.list];
-    const reversedArr = arr.reverse();
-    const index = reversedArr.indexOf(element);
-    if (index !== -1) {
-      return this.list.length - 1 - index;
+    let current = this.head;
+    let lastIndex = -1;
+    let index = 0;
+    while (current && index <= this.size) {
+      if (current.data === element) {
+        lastIndex = this.size - index - 1;
+      }
+      current = current.next;
+      index++;
     }
-    return -1;
+    return lastIndex;
   }
 
-  clear(): void {
-    this.list = [];
-  }
-  extend(newList: LinkedList<T>): void {
-    this.list = this.list.concat(newList.toArray());
-  }
+  copy() {}
+  extend() {}
+  deleteAll() {}
+  delete() {}
+  insert() {}
 }
