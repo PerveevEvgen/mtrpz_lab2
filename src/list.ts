@@ -130,9 +130,58 @@ export class LinkedList<T> {
     return lastIndex;
   }
 
-  copy() {}
-  extend() {}
+  copy(): LinkedList<T> {
+    const newList = new LinkedList<T>();
+    if (!this.head) {
+      return newList;
+    }
+
+    let current = this.head;
+    do {
+      newList.add(current.data);
+      current = current.next as ListNode<T>;
+    } while (current !== this.head);
+
+    return newList;
+  }
   deleteAll() {}
-  delete() {}
+
+  delete(index: number): T | null {
+    if (index < 0 || index >= this.size) {
+      return null;
+    }
+
+    if (!this.head) {
+      return null;
+    }
+
+    let current = this.head as ListNode<T>;
+    let previous: ListNode<T> | null = null;
+
+    if (index === 0) {
+      if (this.size === 1) {
+        this.head = null;
+      } else {
+        while (current.next !== this.head) {
+          current = current.next as ListNode<T>;
+        }
+        this.head = this.head.next;
+        current.next = this.head;
+      }
+    } else {
+      for (let i = 0; i < index; i++) {
+        previous = current;
+        current = current.next as ListNode<T>;
+        if (!current) {
+          return null;
+        }
+      }
+      previous!.next = current.next;
+    }
+
+    this.size--;
+    return current.data;
+  }
+
   insert() {}
 }

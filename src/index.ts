@@ -28,3 +28,17 @@ console.log(list.get(1)); //7
 
 list.clear();
 console.log(list.toArray()); //[]
+
+const list2 = new LinkedList<number>();
+list2.add(1);
+list2.add(2);
+list2.add(3);
+list2.add(4);
+console.log("list2:");
+console.log(list2.toArray()); //[1,2,3,4]
+list2.delete(0);
+list2.delete(1);
+console.log(list2.toArray()); //[2,4]
+console.log("newList");
+const newList = list2.copy();
+console.log(newList.toArray());
