@@ -11,7 +11,7 @@ describe("BaseLinkedList", () => {
       linkedList.add(1);
       expect(linkedList.toArray()).toEqual([1]);
       linkedList.add(2);
-      expect(linkedList.toArray()).toEqual([1,2]);
+      expect(linkedList.toArray()).toEqual([1, 2]);
     });
   });
 
@@ -51,6 +51,28 @@ describe("BaseLinkedList", () => {
       linkedList.add(1);
       linkedList.add(2);
       expect(linkedList.length()).toEqual(2);
+    });
+  });
+
+  describe("delete", () => {
+    test("delete element at given index", () => {
+      linkedList.add(1);
+      linkedList.add(2);
+      linkedList.add(3);
+
+      linkedList.delete(1);
+      expect(linkedList.toArray()).toEqual([1, 3]);
+
+      linkedList.delete(0);
+      expect(linkedList.toArray()).toEqual([3]);
+    });
+
+  describe("clone", () => {
+    test("should clone the list", () => {
+      linkedList.add(1);
+      linkedList.add(2);
+      const clonedList = linkedList.copy();
+      expect(clonedList.toArray()).toEqual([1, 2]);
     });
   });
 });
