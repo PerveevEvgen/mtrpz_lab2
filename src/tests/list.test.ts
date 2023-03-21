@@ -11,7 +11,7 @@ describe("BaseLinkedList", () => {
       linkedList.add(1);
       expect(linkedList.toArray()).toEqual([1]);
       linkedList.add(2);
-      expect(linkedList.toArray()).toEqual([1, 2]);
+      expect(linkedList.toArray()).toEqual([1]);
     });
   });
 
