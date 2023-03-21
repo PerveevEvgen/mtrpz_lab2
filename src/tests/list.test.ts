@@ -76,4 +76,18 @@ describe("BaseLinkedList", () => {
       expect(clonedList.toArray()).toEqual([1, 2]);
     });
   });
+
+  describe("deleteAll", () => {
+    test("delete all elements that are equal to value", () => {
+      const linkedList = new LinkedList<number>();
+      linkedList.add(1);
+      linkedList.add(2);
+      linkedList.add(3);
+      linkedList.add(4);
+      linkedList.add(2);
+      linkedList.add(5);
+      linkedList.deleteAll(2);
+      expect(linkedList.toArray()).toEqual([1, 3, 4, 5]);
+    });
+  });
 });

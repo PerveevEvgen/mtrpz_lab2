@@ -42,3 +42,15 @@ console.log(list2.toArray()); //[2,4]
 console.log("newList");
 const newList = list2.copy();
 console.log(newList.toArray());
+
+const list3 = new LinkedList<number>();
+console.log("list3");
+list3.add(1);
+list3.add(2);
+list3.add(4);
+list3.add(3);
+list3.add(4);
+list3.add(4);
+console.log(list3.toArray());
+list3.deleteAll(4);
+console.log(list3.toArray());

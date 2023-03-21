@@ -144,7 +144,34 @@ export class LinkedList<T> {
 
     return newList;
   }
-  deleteAll() {}
+  deleteAll(value: T): void {
+    // Перевірка чи список порожній
+    if (!this.head) {
+      return;
+    }
+
+    let current: ListNode<T> | null = this.head;
+    let prev: ListNode<T> | null = null;
+
+    // Прохід по списку і видалення елементів з заданим значенням
+    while (current) {
+      if (current.data === value) {
+        if (!prev) {
+          // Якщо значення в першому елементі
+          this.head = current.next;
+        } else {
+          prev.next = current.next;
+        }
+        this.size--;
+      } else {
+        prev = current;
+      }
+      current = current.next;
+      if (current === this.head) {
+        break;
+      }
+    }
+  }
 
   delete(index: number): T | null {
     if (index < 0 || index >= this.size) {
