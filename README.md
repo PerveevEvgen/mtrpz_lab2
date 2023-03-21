@@ -21,8 +21,7 @@ $ npm install
 
 To run application:
 ```bash
-tsc ./src/index.ts
-node ./src/index.ts
+ npx ts-node ./src/index.ts
 ```
 To run tests:
 ```bash
