@@ -66,6 +66,7 @@ describe("BaseLinkedList", () => {
       linkedList.delete(0);
       expect(linkedList.toArray()).toEqual([3]);
     });
+  });
 
   describe("clone", () => {
     test("should clone the list", () => {
