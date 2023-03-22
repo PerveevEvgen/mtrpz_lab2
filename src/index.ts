@@ -61,6 +61,6 @@ list4.add(1);
 list4.add(2);
 list4.add(3);
 list4.add(4);
-console.log(list4.toArray());
+console.log(list4.toArray()); //[ 1, 2, 3, 4 ]
 list4.insert(1, 8);
-console.log(list4.toArray());
+console.log(list4.toArray()); //[ 1, 8, 2, 3, 4 ]

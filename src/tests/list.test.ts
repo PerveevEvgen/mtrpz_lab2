@@ -90,4 +90,20 @@ describe("BaseLinkedList", () => {
       expect(linkedList.toArray()).toEqual([1, 3, 4, 5]);
     });
   });
+
+  describe("insert", () => {
+    test("insert new element at given index", () => {
+      linkedList.add(1);
+      linkedList.add(2);
+      linkedList.add(3);
+      linkedList.add(4);
+      linkedList.insert(1, 8);
+      expect(linkedList.toArray()).toEqual([1, 8, 2, 3, 4]);
+    });
+
+    test("should throw an error if the index is out of bounds", () => {
+      expect(() => linkedList.insert(1, -1)).toThrow();
+      expect(() => linkedList.insert(1, 10)).toThrow();
+    });
+  });
 });
