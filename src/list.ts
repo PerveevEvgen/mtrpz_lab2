@@ -145,19 +145,14 @@ export class LinkedList<T> {
     return newList;
   }
   deleteAll(value: T): void {
-    // Перевірка чи список порожній
     if (!this.head) {
       return;
     }
-
     let current: ListNode<T> | null = this.head;
     let prev: ListNode<T> | null = null;
-
-    // Прохід по списку і видалення елементів з заданим значенням
     while (current) {
       if (current.data === value) {
         if (!prev) {
-          // Якщо значення в першому елементі
           this.head = current.next;
         } else {
           prev.next = current.next;
@@ -210,5 +205,26 @@ export class LinkedList<T> {
     return current.data;
   }
 
-  insert() {}
+  insert(position: number, data: T): void {
+    if (position < 0 || position > this.size) {
+      throw new Error("Invalid position");
+    }
+    const newNode = new ListNode(data);
+    if (position === 0) {
+      newNode.next = this.head;
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      let prev: ListNode<T> | null = null;
+      let i = 0;
+      while (i < position) {
+        prev = current;
+        current = current?.next || null;
+        i++;
+      }
+      prev!.next = newNode;
+      newNode.next = current;
+    }
+    this.size++;
+  }
 }

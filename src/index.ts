@@ -40,7 +40,7 @@ list2.delete(0);
 list2.delete(1);
 console.log(list2.toArray()); //[2,4]
 console.log("newList");
-const newList = list2.copy();
+const newList = list2.copy(); //[2,4]
 console.log(newList.toArray());
 
 const list3 = new LinkedList<number>();
@@ -51,6 +51,16 @@ list3.add(4);
 list3.add(3);
 list3.add(4);
 list3.add(4);
-console.log(list3.toArray());
+console.log(list3.toArray()); // [1,2,4,3,4,4]
 list3.deleteAll(4);
-console.log(list3.toArray());
+console.log(list3.toArray()); //[1,2,3]
+
+const list4 = new LinkedList<number>();
+console.log("list4");
+list4.add(1);
+list4.add(2);
+list4.add(3);
+list4.add(4);
+console.log(list4.toArray());
+list4.insert(1, 8);
+console.log(list4.toArray());
