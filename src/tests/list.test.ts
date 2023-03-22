@@ -15,27 +15,30 @@ describe("BaseLinkedList", () => {
     });
   });
 
-  //   describe("findFirst", () => {
-  //     test("return index of the first element", () => {
-  //       linkedList.add(1);
-  //       linkedList.add(2);
-  //       linkedList.add(1);
-  //       expect(linkedList.findFirst(1)).toBe(0);
-  //       expect(linkedList.findFirst(2)).toBe(1);
-  //       expect(linkedList.findFirst(3)).toBe(-1);
-  //     });
-  //   });
+  describe("findFirst", () => {
+    test("return index of the first element", () => {
+      linkedList.add(1);
+      linkedList.add(2);
+      linkedList.add(1);
+      expect(linkedList.findFirst(1)).toBe(0);
+      expect(linkedList.findFirst(2)).toBe(1);
+    });
+  });
 
-  //   describe("findLast", () => {
-  //     test("should return the index of the last element that matches the given data", () => {
-  //       linkedList.add(1);
-  //       linkedList.add(2);
-  //       linkedList.add(1);
-  //       expect(linkedList.findLast(1)).toBe(2);
-  //       expect(linkedList.findLast(2)).toBe(1);
-  //       expect(linkedList.findLast(3)).toBe(-1);
-  //     });
-  //   });
+  describe("findLast", () => {
+    test("return index of last element ", () => {
+      linkedList.add(1);
+      linkedList.add(2);
+      linkedList.add(3);
+      linkedList.add(4);
+      linkedList.add(5);
+      linkedList.add(6);
+      linkedList.add(6);
+      linkedList.add(7);
+      linkedList.add(8);
+      expect(linkedList.findLast(6)).toBe(2);
+    });
+  });
 
   describe("clear", () => {
     test("remove all elements", () => {
