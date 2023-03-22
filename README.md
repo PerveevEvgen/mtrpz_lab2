@@ -27,6 +27,7 @@ To run tests:
 ```bash
 $ npm test
 ```
+The output of the methods is commented in the index.ts file
 
 ## Reference to the commit the failed CI tests
 [Failed commit link](https://github.com/PerveevEvgen/mtrpz_lab2/commit/a554d228e134bcd3bef96006dfa09e4d8d6bb606)
